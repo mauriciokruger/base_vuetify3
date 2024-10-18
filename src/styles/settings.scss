@@ -1,0 +1,85 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+@use 'vuetify/settings' with (
+  $border-radius-root: 10px,
+  $button-text-transform: initial,
+  $button-text-letter-spacing: 1px,
+  $text-field-border-radius: 50px,
+  // $button-border-radius: 
+);
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+html, body, * {
+  font-family: "Poppins", sans-serif;
+}
+
+// .v-theme--light  {
+//   --file-input-border-color: #000;
+//   --file-input-icon-color-hover: #000;
+//   --file-input-label-color-hover: #000;
+//   --file-list-item-icon-file-color: #000;
+//   --file-list-item-name-color: #000;
+//   --progress-bar-over-bg-color: #4caf50;
+// }
+// .v-theme--dark {
+//   --file-input-border-color: #000000;
+//   --file-uploader-bg-color: #000;
+//   --file-uploader-heading-color: #fff;
+//   --file-input-icon-color-hover: #000000;
+//   --file-input-label-color-hover: #000000;
+//   --file-input-label-color: #fff;
+//   --file-list-item-bg-color: #121212;
+//   --file-list-item-icon-file-color: #000000;
+//   --file-list-item-name-color: #fff;
+//   --progress-bar-over-bg-color: #4caf50;
+// }
+.v-row {
+  margin: -10px -5px;
+}
+[class^='v-col'] {
+  padding: 10px 5px;
+}
+// .v-table {
+//   --v-table-header-height: 40px!important;
+//   --v-table-row-height: 35px!important;
+//   * {
+//     font-size: 14px;
+//   }
+// }
+// .v-input {
+//   .v-icon--size-default {
+//     font-size: 18px!important;
+//   }
+// }
+// .v-field {
+//   --v-field-input-padding-top: 2px!important;
+//   --v-field-input-padding-bottom: 2px!important;
+//   --v-input-control-height: 40px!important;
+//   border-radius: 3px !important;
+// }
+// .v-text-field--prefixed {
+// }
+// .v-text-field__prefix {
+//   min-height: 30px!important;
+// }
+// .v-text-field__prefix__text {
+//   font-size: 9px!important;
+// }
+// .v-field__field {
+//   font-size: 14px;
+// }
+// input {
+//   font-size: 14px!important;
+// }
+// .v-label {
+//   font-size: 14px;
+// }
+// .v-field__input {
+//   min-height: 30px!important;
+// }
