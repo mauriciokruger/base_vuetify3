@@ -1,158 +1,160 @@
 <template>
   <div>
-    <v-row>
-      <v-col cols="12" md="6">
-        <TextInput
-          label="Pesquisar"
-          placeholder="Digite para buscar"
-          icon="mdi-magnify"
-          iconPosition="left"
-          backgroundColor="#f0f0f0"
-          variant="outlined"
-          v-model="busca"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-    
-        <TextInput
-          label="Email"
-          placeholder="Digite seu email"
-          icon="mdi-email"
-          iconPosition="right"
-          variant="filled"
-          backgroundColor="#e0f7fa"
-          v-model="text"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <TheButton
-          icon="mdi-check"
-          iconPosition="left"
-          variant="outlined"
-          color="white"
-          backgroundColor="green"
-          size="large"
-          @click="handleClick"
-          :loading="salvando"
-          :disabled="salvando"
-        >
-          Aprovar
-        </TheButton>
+    <v-container>
+      <v-row>
+        <v-col cols="12" md="6">
+          <TextInput
+            label="Pesquisar"
+            placeholder="Digite para buscar"
+            icon="mdi-magnify"
+            iconPosition="left"
+            backgroundColor="#f0f0f0"
+            variant="outlined"
+            v-model="busca"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+      
+          <TextInput
+            label="Email"
+            placeholder="Digite seu email"
+            icon="mdi-email"
+            iconPosition="right"
+            variant="filled"
+            backgroundColor="#e0f7fa"
+            v-model="text"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <TheButton
+            icon="mdi-check"
+            iconPosition="left"
+            variant="outlined"
+            color="white"
+            backgroundColor="green"
+            size="large"
+            @click="handleClick"
+            :loading="salvando"
+            :disabled="salvando"
+          >
+            Aprovar
+          </TheButton>
 
-        <TheButton
-          icon="mdi-close"
-          iconPosition="right"
-          variant="text"
-          color="red"
-          backgroundColor="#fff"
-          size="small"
-          @click="handleCancel"
-        >
-          Cancelar
-        </TheButton>
-      </v-col>
-      <v-col cols="12" md="6">
-        <TheButton @click="showSnackbar">
-          Snackbar
-        </TheButton>
-        <SnackBar :snackbar="snackbarComp" />
-      </v-col>
-      <v-col cols="12" md="6">
-        <TheButton @click="showAlertComp">
-          Alert
-        </TheButton>
-        <Alert
-          :message="alertComp.alertMessage"
-          :type="alertComp.alertType"
-          :icon="alertComp.alertIcon"
-          :color="alertComp.alertColor"
-          v-model="alertComp.showAlert"
-          :timeout="3000"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <TextSelect
-          v-model="select"
-          :label="'Escolha sua opção'"
-          :items="optionsSelect"
-          :color="'green'"
-          :variant="'outlined'"
-          :rules="[v => !!v || 'Este campo é obrigatório']"
-          :isClearable="true"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <TextAutocomplete
-          v-model="autocomplete"
-          :label="'Escolha sua opção'"
-          :items="optionsSelect"
-          :color="'green'"
-          :variant="'outlined'"
-          :rules="[v => !!v || 'Este campo é obrigatório']"
-          :isClearable="true"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <DatePicker
-          v-model="date"
-          backgroundColor="#f0f0f0"
-          variant="outlined"
-          :startDate="initialDate"
-          label="Selecione uma data"
-          placeholder="dd/mm/yyyy"
-          :rules="[v => !!v || 'Este campo é obrigatório']"
-          :disabled="salvando"
-          :loading="salvando"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <DatePeriod
-          :disabled="salvando"
-          v-model="selectedDates"
-          label="Filtre por um Período"
-        />
-        <p>Datas Selecionadas: {{ selectedDates }}</p>
-      </v-col>
-      <v-col cols="12" md="6">
-        <MaskedTextInput
-          mask="###.###.###-##"
-          label="CPF"
-          placeholder="Input de máscaras"
-          backgroundColor="#f0f0f0"
-          variant="outlined"
-          v-model="inputMascaras"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <TextValueInput
-          label="Valor"
-          placeholder="Digite o valor"
-          variant="outlined"
-          v-model="valor"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-      </v-col>
-      <v-col cols="12" md="6">
-        <TextAreaInput
-          label="Textarea"
-          placeholder="Digite"
-          backgroundColor="#f0f0f0"
-          variant="outlined"
-          v-model="busca"
-          :loading="salvando"
-          :disabled="salvando"
-        />
-      </v-col>
-    </v-row>
+          <TheButton
+            icon="mdi-close"
+            iconPosition="right"
+            variant="text"
+            color="red"
+            backgroundColor="#fff"
+            size="small"
+            @click="handleCancel"
+          >
+            Cancelar
+          </TheButton>
+        </v-col>
+        <v-col cols="12" md="6">
+          <TheButton @click="showSnackbar">
+            Snackbar
+          </TheButton>
+          <SnackBar :snackbar="snackbarComp" />
+        </v-col>
+        <v-col cols="12" md="6">
+          <TheButton @click="showAlertComp">
+            Alert
+          </TheButton>
+          <Alert
+            :message="alertComp.alertMessage"
+            :type="alertComp.alertType"
+            :icon="alertComp.alertIcon"
+            :color="alertComp.alertColor"
+            v-model="alertComp.showAlert"
+            :timeout="3000"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <TextSelect
+            v-model="select"
+            :label="'Escolha sua opção'"
+            :items="optionsSelect"
+            :color="'green'"
+            :variant="'outlined'"
+            :rules="[v => !!v || 'Este campo é obrigatório']"
+            :isClearable="true"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <TextAutocomplete
+            v-model="autocomplete"
+            :label="'Escolha sua opção'"
+            :items="optionsSelect"
+            :color="'green'"
+            :variant="'outlined'"
+            :rules="[v => !!v || 'Este campo é obrigatório']"
+            :isClearable="true"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <DatePicker
+            v-model="date"
+            backgroundColor="#f0f0f0"
+            variant="outlined"
+            :startDate="initialDate"
+            label="Selecione uma data"
+            placeholder="dd/mm/yyyy"
+            :rules="[v => !!v || 'Este campo é obrigatório']"
+            :disabled="salvando"
+            :loading="salvando"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <DatePeriod
+            :disabled="salvando"
+            v-model="selectedDates"
+            label="Filtre por um Período"
+          />
+          <p>Datas Selecionadas: {{ selectedDates }}</p>
+        </v-col>
+        <v-col cols="12" md="6">
+          <MaskedTextInput
+            mask="###.###.###-##"
+            label="CPF"
+            placeholder="Input de máscaras"
+            backgroundColor="#f0f0f0"
+            variant="outlined"
+            v-model="inputMascaras"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <TextValueInput
+            label="Valor"
+            placeholder="Digite o valor"
+            variant="outlined"
+            v-model="valor"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+        </v-col>
+        <v-col cols="12" md="6">
+          <TextAreaInput
+            label="Textarea"
+            placeholder="Digite"
+            backgroundColor="#f0f0f0"
+            variant="outlined"
+            v-model="busca"
+            :loading="salvando"
+            :disabled="salvando"
+          />
+        </v-col>
+      </v-row>
+    </v-container>  
   </div>
 </template>
 <script setup>
