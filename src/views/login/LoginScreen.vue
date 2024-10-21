@@ -131,6 +131,16 @@
           :disabled="salvando"
         />
       </v-col>
+      <v-col cols="12" md="6">
+        <TextValueInput
+          label="Valor"
+          placeholder="Digite o valor"
+          variant="outlined"
+          v-model="valor"
+          :loading="salvando"
+          :disabled="salvando"
+        />
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -147,6 +157,7 @@ import Alert from '@/components/Alert.vue'
 import DatePicker from '@/components/inputs/DatePicker.vue'
 import DatePeriod from '@/components/inputs/DatePeriod.vue'
 import MaskedTextInput from '@/components/inputs/MaskedTextInput.vue'
+import TextValueInput from '@/components/inputs/TextValueInput.vue'
 import moment from 'moment'
 export default {
   components: {
@@ -158,7 +169,8 @@ export default {
     Alert,
     DatePicker,
     DatePeriod,
-    MaskedTextInput
+    MaskedTextInput,
+    TextValueInput
   },
   data() {
     return {
@@ -177,6 +189,7 @@ export default {
         { text: 'Opção 2', value: 2 },
         { text: 'Opção 3', value: 3 },
       ],
+      valor: '',
       selectedDates: {
         start: moment(new Date()).startOf('month').format('YYYY-MM-DD'),
         end: moment(new Date()).endOf('month').format('YYYY-MM-DD')
