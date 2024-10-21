@@ -141,6 +141,17 @@
           :disabled="salvando"
         />
       </v-col>
+      <v-col cols="12" md="6">
+        <TextAreaInput
+          label="Textarea"
+          placeholder="Digite"
+          backgroundColor="#f0f0f0"
+          variant="outlined"
+          v-model="busca"
+          :loading="salvando"
+          :disabled="salvando"
+        />
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -158,6 +169,7 @@ import DatePicker from '@/components/inputs/DatePicker.vue'
 import DatePeriod from '@/components/inputs/DatePeriod.vue'
 import MaskedTextInput from '@/components/inputs/MaskedTextInput.vue'
 import TextValueInput from '@/components/inputs/TextValueInput.vue'
+import TextAreaInput from '@/components/inputs/TextAreaInput.vue'
 import moment from 'moment'
 export default {
   components: {
@@ -170,7 +182,8 @@ export default {
     DatePicker,
     DatePeriod,
     MaskedTextInput,
-    TextValueInput
+    TextValueInput,
+    TextAreaInput
   },
   data() {
     return {
