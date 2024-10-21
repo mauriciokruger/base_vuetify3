@@ -3,8 +3,8 @@ import { getToken } from "./token";
 // VALIDAÇÃO DE PRODUÇÃO E DESENVOLVIMENTO
 
 const URLdev = '192.168.10.245'
-const URL = window.location.hostname === 'mutinno.d3t.com.br' ? 'https://mutinno.d3t.com.br/api/' : window.location.hostname === URLdev ? 'https://api-mutinno.d3t.com.br/api/' : 'https://api-mutinno.d3t.com.br/api/';
-const URLAplication = window.location.hostname === 'mutinno.d3t.com.br' ? 'https://mutinno.d3t.com.br/' : window.location.hostname === URLdev ? 'http://localhost:3000/' : 'https://mutinno.d3t.com.br/';
+const URL = window.location.hostname === 'base.d3t.com.br' ? 'https://base.d3t.com.br/api/' : window.location.hostname === URLdev ? 'https://api-base.d3t.com.br/api/' : 'https://api-base.d3t.com.br/api/';
+const URLAplication = window.location.hostname === 'base.d3t.com.br' ? 'https://base.d3t.com.br/' : window.location.hostname === URLdev ? 'http://localhost:3000/' : 'https://base.d3t.com.br/';
 
 axios.interceptors.response.use(function (response) {
   return response;
