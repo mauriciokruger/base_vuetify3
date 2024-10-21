@@ -1,5 +1,5 @@
 <template>
-  <v-select
+  <v-autocomplete
     v-model="selectedValue"
     :items="items"
     :label="label"
@@ -15,7 +15,7 @@
     <template v-slot:no-data>
       <div class="px-4">Nenhum dado encontrado</div>
     </template>
-  </v-select>
+  </v-autocomplete>
 </template>
 
 <script>

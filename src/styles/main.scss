@@ -11,10 +11,11 @@ $darkBlack: #090907;
 $textLight: #222325;
 
 // estilos para tema light
-.v-theme--light {
-  
-}
+.v-theme--light {}
 
 // estilos para tema dark
-.v-theme--dark {
+.v-theme--dark {}
+
+.custom-button {
+  padding: 0 5px !important;
 }

@@ -27,7 +27,7 @@
         />
       </v-col>
       <v-col cols="12" md="6">
-        <Button
+        <TheButton
           icon="mdi-check"
           iconPosition="left"
           variant="outlined"
@@ -39,9 +39,9 @@
           :disabled="salvando"
         >
           Aprovar
-        </Button>
+        </TheButton>
 
-        <Button
+        <TheButton
           icon="mdi-close"
           iconPosition="right"
           variant="text"
@@ -51,18 +51,18 @@
           @click="handleCancel"
         >
           Cancelar
-        </Button>
+        </TheButton>
       </v-col>
       <v-col cols="12" md="6">
-        <Button @click="showSnackbar">
+        <TheButton @click="showSnackbar">
           Snackbar
-        </Button>
+        </TheButton>
         <SnackBar :snackbar="snackbarComp" />
       </v-col>
       <v-col cols="12" md="6">
-        <Button @click="showAlertComp">
+        <TheButton @click="showAlertComp">
           Alert
-        </Button>
+        </TheButton>
         <Alert
           :message="alertComp.alertMessage"
           :type="alertComp.alertType"
@@ -85,6 +85,52 @@
           :disabled="salvando"
         />
       </v-col>
+      <v-col cols="12" md="6">
+        <TextAutocomplete
+          v-model="autocomplete"
+          :label="'Escolha sua opção'"
+          :items="optionsSelect"
+          :color="'green'"
+          :variant="'outlined'"
+          :rules="[v => !!v || 'Este campo é obrigatório']"
+          :isClearable="true"
+          :loading="salvando"
+          :disabled="salvando"
+        />
+      </v-col>
+      <v-col cols="12" md="6">
+        <DatePicker
+          v-model="date"
+          backgroundColor="#f0f0f0"
+          variant="outlined"
+          :startDate="initialDate"
+          label="Selecione uma data"
+          placeholder="dd/mm/yyyy"
+          :rules="[v => !!v || 'Este campo é obrigatório']"
+          :disabled="salvando"
+          :loading="salvando"
+        />
+      </v-col>
+      <v-col cols="12" md="6">
+        <DatePeriod
+          :disabled="salvando"
+          v-model="selectedDates"
+          label="Filtre por um Período"
+        />
+        <p>Datas Selecionadas: {{ selectedDates }}</p>
+      </v-col>
+      <v-col cols="12" md="6">
+        <MaskedTextInput
+          mask="###.###.###-##"
+          label="CPF"
+          placeholder="Input de máscaras"
+          backgroundColor="#f0f0f0"
+          variant="outlined"
+          v-model="inputMascaras"
+          :loading="salvando"
+          :disabled="salvando"
+        />
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -94,16 +140,25 @@
 <script>
 import TextInput from '@/components/inputs/TextInput.vue'
 import TextSelect from '@/components/inputs/TextSelect.vue'
-import Button from '@/components/Button.vue'
+import TextAutocomplete from '@/components/inputs/TextAutocomplete.vue'
+import TheButton from '@/components/TheButton.vue'
 import SnackBar from '@/components/SnackBar.vue'
 import Alert from '@/components/Alert.vue'
+import DatePicker from '@/components/inputs/DatePicker.vue'
+import DatePeriod from '@/components/inputs/DatePeriod.vue'
+import MaskedTextInput from '@/components/inputs/MaskedTextInput.vue'
+import moment from 'moment'
 export default {
   components: {
     TextInput,
     TextSelect,
-    Button,
+    TextAutocomplete,
+    TheButton,
     SnackBar,
-    Alert
+    Alert,
+    DatePicker,
+    DatePeriod,
+    MaskedTextInput
   },
   data() {
     return {
@@ -113,11 +168,19 @@ export default {
       alertComp: {},
       salvando: false,
       select: null,
+      autocomplete: null,
+      initialDate: moment(new Date()).format('DD/MM/YYYY'),
+      date: '',
+      inputMascaras: '',
       optionsSelect: [
         { text: 'Opção 1', value: 1 },
         { text: 'Opção 2', value: 2 },
         { text: 'Opção 3', value: 3 },
-      ]
+      ],
+      selectedDates: {
+        start: moment(new Date()).startOf('month').format('YYYY-MM-DD'),
+        end: moment(new Date()).endOf('month').format('YYYY-MM-DD')
+      },
     }
   },
   methods: {

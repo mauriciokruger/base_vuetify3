@@ -1,20 +1,35 @@
 <template>
-  <v-text-field
-    v-model="internalValue"
-    :label="label"
-    :placeholder="placeholder"
-    :type="type"
-    :rules="rules"
-    :variant="variant"
-    :disabled="disabled"
-    :loading="loading"
-    :prepend-inner-icon="icon && iconPosition === 'left' ? icon : ''"
-    :append-inner-icon="icon && iconPosition === 'right' ? icon : ''"
-    :background-color="backgroundColor"
-  />
+  <div>
+    <div class="d-none">
+      <input v-maska :data-maska="mask" v-model="internalValue">
+    </div>
+    <v-text-field
+      v-model="internalValue"
+      :label="label"
+      :placeholder="placeholder"
+      :type="type"
+      :rules="rules"
+      :variant="variant"
+      :disabled="disabled"
+      :loading="loading"
+      :prepend-inner-icon="icon && iconPosition === 'left' ? icon : ''"
+      :append-inner-icon="icon && iconPosition === 'right' ? icon : ''"
+      :background-color="backgroundColor"
+    />
+  </div>
 </template>
 
+<script setup>
+  import { vMaska } from "maska"
+</script>
+
 <script>
+// Máscaras padrão comentadas para fácil referência
+// CPF: ###.###.###-##
+// CEP: #####-###
+// TELEFONE: ['(##) ####-####', '(##) #####-####']
+// CNPJ: ##.###.###/####-##
+
 export default {
   props: {
     modelValue: {
@@ -60,6 +75,10 @@ export default {
     },
     backgroundColor: {
       type: String,
+      default: ''
+    },
+    mask: {
+      type: [String, Array],
       default: ''
     }
   },
